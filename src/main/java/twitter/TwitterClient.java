@@ -10,7 +10,7 @@ import java.text.ParseException;
 import java.util.List;
 
 public class TwitterClient {
-    private final static String HOST = "api.twitter.com";
+    final static String HOST = "api.twitter.com";
     private final static String API_VERSION = "1.1";
     private final static String CONSUMER_KEY = "whyoT9mECKbWgEy4dFE7yz0hp";
     private final static String CONSUMER_SECRET = "Ly91PYaIWgIkuxIBJCSNr7SK7xQnopuM0CZij8U3k4tykla5CW";
