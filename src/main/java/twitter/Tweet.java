@@ -20,6 +20,13 @@ public class Tweet {
         this.userName = userName;
     }
 
+    public Tweet(Date createdAt, String text, String userId, String userName) throws ParseException {
+        this.createdAt = createdAt;
+        this.text = text;
+        this.userId = userId;
+        this.userName = userName;
+    }
+
     public Date getCreatedAt() {
         return createdAt;
     }
