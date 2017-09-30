@@ -7,6 +7,7 @@ import org.junit.Test;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class LRUCacheTests {
     private LRUCache<Integer, Integer> lruCache;
@@ -65,6 +66,14 @@ public class LRUCacheTests {
             int value = ThreadLocalRandom.current().nextInt(minVal, maxVal + 1);
             lruCache.put(key, value);
             assertEquals((Integer) value, lruCache.get(key));
+        }
+    }
+
+    @Test
+    public void getNonexistentValues() {
+        for (int i = 0; i < 10; i++) {
+            Integer result = lruCache.get(i);
+            assertTrue(result == null);
         }
     }
 
