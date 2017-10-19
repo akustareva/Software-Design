@@ -10,7 +10,7 @@ import java.text.ParseException;
 import java.util.List;
 
 @HostReachableRule.HostReachable(TwitterClient.HOST)
-public class TwitterClientIntegrationTests {
+public class TwitterClientIntegrationTest {
     @ClassRule
     public static final HostReachableRule rule = new HostReachableRule();
 

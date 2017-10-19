@@ -9,7 +9,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class LRUCacheTests {
+public class LRUCacheTest {
     private LRUCache<Integer, Integer> lruCache;
     private final int maxCacheSize = 100;
 

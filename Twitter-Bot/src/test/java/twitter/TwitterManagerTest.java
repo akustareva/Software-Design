@@ -15,7 +15,7 @@ import java.util.List;
 import static org.mockito.Mockito.when;
 import static twitter.TwitterManager.HOUR_IN_MILLIS;
 
-public class TwitterManagerTests {
+public class TwitterManagerTest {
     private TwitterManager twitterManager;
     @Mock
     private TwitterClient twitterClient;
