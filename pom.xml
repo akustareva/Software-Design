@@ -11,6 +11,7 @@
     <modules>
         <module>Lru-Cache</module>
         <module>Twitter-Bot</module>
+        <module>Refactoring</module>
     </modules>
 
     <properties>
