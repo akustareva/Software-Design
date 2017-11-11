@@ -12,6 +12,7 @@
         <module>Lru-Cache</module>
         <module>Twitter-Bot</module>
         <module>Refactoring</module>
+        <module>MVC</module>
     </modules>
 
     <properties>
@@ -19,6 +20,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
         <junit.version>4.11</junit.version>
+        <jetty.version>9.0.3.v20130506</jetty.version>
+        <spring.version>5.0.0.RELEASE</spring.version>
+        <sqlite-jdbc.version>3.8.11.2</sqlite-jdbc.version>
     </properties>
 
     <dependencies>
