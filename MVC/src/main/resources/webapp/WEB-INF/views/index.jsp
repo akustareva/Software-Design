@@ -38,14 +38,15 @@
 </form:form>
 
 <h3>Edit TODO List</h3>
-<form:form modelAttribute="list" method="GET" action="/edit-list">
+<form:form modelAttribute="list" method="GET">
     <table>
         <tr>
             <td>Select list: </td>
             <td><form:select path="id">
                 <form:options items="${lists}" itemValue="id" itemLabel="name" />
                 </form:select></td>
-            <td><input type="submit" value="Select"></td>
+            <td><input type="submit" value="Edit" onclick="form.action='/edit-list';"></td>
+            <td><input type="submit" value="Delete" onclick="form.action='/remove-list';"></td>
         </tr>
     </table>
 </form:form>

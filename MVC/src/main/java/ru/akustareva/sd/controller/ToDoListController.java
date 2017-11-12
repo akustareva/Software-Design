@@ -6,6 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.akustareva.sd.dao.ToDoDao;
 import ru.akustareva.sd.model.Business;
 import ru.akustareva.sd.model.ToDoList;
@@ -17,15 +18,21 @@ public class ToDoListController {
 
     @RequestMapping(value = "/add-list", method = RequestMethod.POST)
     public String addToDoList(@ModelAttribute("product") ToDoList toDoList) {
-        toDoDao.addToDOList(toDoList);
+        toDoDao.addToDoList(toDoList);
         return "redirect:/get-lists";
     }
 
     @RequestMapping(value = "/get-lists", method = RequestMethod.GET)
-    public String getProducts(ModelMap map) {
+    public String getToDoLists(ModelMap map) {
         map.addAttribute("lists", toDoDao.getAllToDoLists());
         map.addAttribute("list", new ToDoList());
         return "index";
+    }
+
+    @RequestMapping(value = "/remove-list", method = RequestMethod.GET)
+    public String deleteToDoList(@ModelAttribute("list") ToDoList toDoList) {
+        toDoDao.deleteToDoListById(toDoList.getId());
+        return "redirect:/get-lists";
     }
 
     @RequestMapping(value = "/edit-list", method = RequestMethod.GET)
@@ -39,6 +46,14 @@ public class ToDoListController {
     @RequestMapping(value = "/add-business", method = RequestMethod.POST)
     public String addBusinessToList(@ModelAttribute("business") Business business) {
         toDoDao.addBusinessToList(business);
+        return "redirect:/edit-list?id=" + business.getListId();
+    }
+
+    @RequestMapping(value = "/set-done", method = RequestMethod.POST)
+    public String setBusinessAsDone(@ModelAttribute("business") Business business, @RequestParam("sid") String selected) {
+        int id = Integer.parseInt(selected);
+        Business selectedBusiness = toDoDao.getBusinessById(id);
+        toDoDao.setBusinessDoneStatus((selectedBusiness.getIsDone() + 1) % 2, id);
         return "redirect:/edit-list?id=" + business.getListId();
     }
 }
