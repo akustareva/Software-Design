@@ -1,15 +1,18 @@
 package ru.akustareva.sd.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import ru.akustareva.sd.dao.ToDoDao;
 import ru.akustareva.sd.dao.ToDoJdbcDao;
 
 import javax.sql.DataSource;
 
+@Configuration
 public class JdbcDaoContextConfiguration {
 
     @Bean
-    public ToDoJdbcDao productJdbcDao(DataSource dataSource) {
+    public ToDoDao listJdbcDao(DataSource dataSource) {
         return new ToDoJdbcDao(dataSource);
     }
 

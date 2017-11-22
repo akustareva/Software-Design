@@ -53,7 +53,7 @@ public class ToDoJdbcDao extends JdbcDaoSupport implements ToDoDao {
     }
 
     @Override
-    public List<Business> getAllListBusiness(ToDoList list) {
+    public List<Business> getAllListBusinesses(ToDoList list) {
         String sql = "SELECT * FROM Business WHERE listId = ?";
         return getBusinessesByQuery(sql, list.getId());
     }

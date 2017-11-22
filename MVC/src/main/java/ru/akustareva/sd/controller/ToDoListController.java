@@ -38,7 +38,7 @@ public class ToDoListController {
     @RequestMapping(value = "/edit-list", method = RequestMethod.GET)
     public String editToDoList(@ModelAttribute("list") ToDoList toDoList, ModelMap map) {
         map.addAttribute("list", toDoDao.getListById(toDoList.getId()));
-        map.addAttribute("businesses", toDoDao.getAllListBusiness(toDoList));
+        map.addAttribute("businesses", toDoDao.getAllListBusinesses(toDoList));
         map.addAttribute("business", new Business());
         return "list";
     }

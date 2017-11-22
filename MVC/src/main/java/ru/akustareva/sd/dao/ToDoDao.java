@@ -12,7 +12,7 @@ public interface ToDoDao {
     ToDoList getListById(int id);
 
     int addBusinessToList(Business business);
-    List getAllListBusiness(ToDoList list);
+    List<Business> getAllListBusinesses(ToDoList list);
     int setBusinessDoneStatus(int isDone, int id);
     Business getBusinessById(int id);
 }
