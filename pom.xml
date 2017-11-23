@@ -13,6 +13,7 @@
         <module>Twitter-Bot</module>
         <module>Refactoring</module>
         <module>MVC</module>
+        <module>Graph-Visualizer</module>
     </modules>
 
     <properties>
