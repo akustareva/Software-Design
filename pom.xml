@@ -15,6 +15,7 @@
         <module>MVC</module>
         <module>Graph-Visualizer</module>
         <module>Calculator</module>
+        <module>Clock</module>
     </modules>
 
     <properties>
