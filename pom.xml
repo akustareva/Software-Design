@@ -17,6 +17,7 @@
         <module>Calculator</module>
         <module>Clock</module>
         <module>Profiler</module>
+        <module>Actors</module>
     </modules>
 
     <properties>
