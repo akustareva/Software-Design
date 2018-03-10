@@ -18,8 +18,6 @@ public class RequestHandler {
     public void getResponses(String query) {
         ActorSystem system = ActorSystem.create("MySystem");
         ActorRef master = system.actorOf(Props.create(MasterActor.class, out, query));
-        for (int i = 0; i < MasterActor.SEARCHERS_NUM; i++) {
-            master.tell("/start", ActorRef.noSender());
-        }
+        master.tell("/start", ActorRef.noSender());
     }
 }

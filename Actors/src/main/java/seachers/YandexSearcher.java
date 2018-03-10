@@ -1,6 +1,8 @@
 package seachers;
 
 import entities.Result;
+import org.jsoup.Jsoup;
+import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -22,7 +24,10 @@ public class YandexSearcher extends Searcher {
 
     @Override
     public List<Result> search() throws IOException {
-        return search(getUrlForSearch(query), "a[tabindex=2]");
+        Elements links = Jsoup.connect(getUrlForSearch(query))
+                .userAgent(USER_AGENT)
+                .get().select("a[tabindex=2]");
+        return extractLinks(links);
     }
 
     private String getUrlForSearch(String query) throws UnsupportedEncodingException {

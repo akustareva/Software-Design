@@ -27,7 +27,7 @@ public class MasterActor extends UntypedActor {
         classes.add(GoogleSearcher.class);
         classes.add(YandexSearcher.class);
     }
-    public static final int SEARCHERS_NUM = classes.size();
+    private static final int SEARCHERS_NUM = classes.size();
     private List<Response> responses = new ArrayList<>();
 
     public MasterActor(PrintWriter out, String query) {
@@ -40,24 +40,22 @@ public class MasterActor extends UntypedActor {
     @Override
     public void onReceive(Object o) throws Throwable {
         if (o.equals("/start")) {
-//            childRouter.tell(new GoogleSearcher(query), getSelf());
             for (int i = 0; i < SEARCHERS_NUM; i++) {
                 Constructor constructor = classes.get(i).getConstructor(String.class);
                 childRouter.tell(constructor.newInstance(query), getSelf());
             }
         } else if (o instanceof Response) {
             responses.add((Response) o);
-            System.out.println(((Response) o).getName());
-//            if (responses.size() == SEARCHERS_NUM) {
-//                for (Response response: responses) {
-//                    out.println("Got answer from " + response.getName());
-//                    for (Result result: response.getResults()) {
-//                        out.println(result);
-//                    }
-//                }
-//                out.close();
-//                throw new StopException();
-//            }
+            if (responses.size() == SEARCHERS_NUM) {
+                for (Response response: responses) {
+                    out.println("Got answer from " + response.getName());
+                    for (Result result: response.getResults()) {
+                        out.println(result);
+                    }
+                }
+                out.close();
+                throw new StopException();
+            }
         }
     }
 

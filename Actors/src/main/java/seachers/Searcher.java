@@ -15,18 +15,14 @@ import java.util.List;
  * Created by Anna on 09.03.2018.
  */
 public abstract class Searcher {
-    private static final String USER_AGENT = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)";
+    protected static final String USER_AGENT = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)";
 
     public abstract List<Result> search() throws IOException;
 
     public abstract String getSearcherName();
 
-    protected List<Result> search(String query, String selectRule) throws IOException {
+    protected List<Result> extractLinks(Elements links) throws IOException {
         List<Result> results = new ArrayList<>();
-//        System.out.println(query);
-        Elements links = Jsoup.connect(query)
-                .userAgent(USER_AGENT)
-                .get().select(selectRule);
         for (Element link : links) {
             String url = link.absUrl("href");
             if (url.startsWith("http://www.google.ru/url?q=")) {

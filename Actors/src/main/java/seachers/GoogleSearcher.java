@@ -2,14 +2,11 @@ package seachers;
 
 import entities.Result;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +24,10 @@ public class GoogleSearcher extends Searcher {
 
     @Override
     public List<Result> search() throws IOException {
-        return search(getUrlForSearch(query), ".g>.r>a");
+        Elements links = Jsoup.connect(getUrlForSearch(query))
+                .userAgent(USER_AGENT)
+                .get().select(".g>.r>a");
+        return extractLinks(links);
     }
 
     private String getUrlForSearch(String query) throws UnsupportedEncodingException {
