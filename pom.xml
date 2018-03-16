@@ -18,6 +18,7 @@
         <module>Clock</module>
         <module>Profiler</module>
         <module>Actors</module>
+        <module>RXJava</module>
     </modules>
 
     <properties>
