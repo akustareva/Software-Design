@@ -18,7 +18,7 @@ public class Methods {
 
     public static Observable<String> addUser(Map<String, List<String>> params) {
         String error = check(params, USER_PARAMS);
-        if (error.contains(",")) {
+        if (!error.endsWith("field(s) ")) {
             return Observable.just(error);
         }
         Integer id = Integer.parseInt(params.get("id").get(0));
@@ -60,7 +60,7 @@ public class Methods {
     }
 
     private static String check(Map<String, List<String>> params, List<String> values) {
-        StringJoiner error = new StringJoiner(",", "Please fill in fields ", "");
+        StringJoiner error = new StringJoiner(", ", "Please fill in field(s) ", "");
         values.stream().filter(value -> !params.containsKey(value)).forEach(error::add);
         return error.toString();
     }
